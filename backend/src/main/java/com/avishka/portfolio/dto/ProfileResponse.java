@@ -9,6 +9,7 @@ public record ProfileResponse(
         String bio,
         String location,
         String email,
+        String photoUrl,
         String resumeUrl,
         List<String> highlights,
         List<SocialLink> socials

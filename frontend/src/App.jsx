@@ -92,6 +92,11 @@ export default function App() {
   return (
     <>
       {loaderMounted && <Loader leaving={ready} />}
+      <div className="aurora-bg" aria-hidden="true">
+        <span className="aurora-blob aurora-blob-1" />
+        <span className="aurora-blob aurora-blob-2" />
+        <span className="aurora-blob aurora-blob-3" />
+      </div>
       <ParticleNetwork />
       <Navbar name={profile?.name} />
       <main>

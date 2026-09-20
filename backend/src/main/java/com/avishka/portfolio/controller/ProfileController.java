@@ -26,6 +26,7 @@ public class ProfileController {
                         + "utilities. Replace this bio with your own story.",
                 "Sri Lanka",
                 "ashenikarunarathna2002@gmail.com",
+                "/profile.jpg",
                 "/resume.pdf",
                 List.of(
                         "Full-stack delivery: one developer covering backend, frontend, and deployment",

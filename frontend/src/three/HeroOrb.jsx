@@ -24,7 +24,7 @@ export default function HeroOrb() {
 
     const geometry = new THREE.TorusKnotGeometry(1.3, 0.42, 220, 32);
     const material = new THREE.MeshPhysicalMaterial({
-      color: 0x2dd4bf,
+      color: 0x8b5cf6,
       metalness: 0.55,
       roughness: 0.15,
       iridescence: 1,
@@ -35,11 +35,11 @@ export default function HeroOrb() {
     const knot = new THREE.Mesh(geometry, material);
     scene.add(knot);
 
-    const keyLight = new THREE.PointLight(0x2dd4bf, 45, 20);
+    const keyLight = new THREE.PointLight(0x8b5cf6, 45, 20);
     keyLight.position.set(4, 3, 6);
     scene.add(keyLight);
 
-    const rimLight = new THREE.PointLight(0x38bdf8, 30, 20);
+    const rimLight = new THREE.PointLight(0xec4899, 30, 20);
     rimLight.position.set(-4, -2, -4);
     scene.add(rimLight);
 

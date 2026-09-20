@@ -1,17 +1,19 @@
 :root {
-  --color-bg: #0b1414;
-  --color-bg-alt: #101c1c;
-  --color-surface: #142322;
-  --color-border: #24403e;
-  --color-text: #e6f2f0;
-  --color-text-muted: #8fa8a5;
-  --color-accent: #2dd4bf;
-  --color-accent-hover: #5eead4;
-  --color-accent-secondary: #38bdf8;
+  --color-bg: #08080d;
+  --color-bg-alt: #0f0f18;
+  --color-surface: rgba(255, 255, 255, 0.045);
+  --color-surface-solid: #15151f;
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-text: #f3f2fa;
+  --color-text-muted: #a3a1b8;
+  --color-accent: #8b5cf6;
+  --color-accent-hover: #a78bfa;
+  --color-accent-secondary: #ec4899;
+  --gradient-accent: linear-gradient(120deg, #8b5cf6, #ec4899);
   --max-width: 1040px;
   font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
   color-scheme: dark;
-  font-size: 18px;
+  font-size: 20px;
 }
 
 * {
