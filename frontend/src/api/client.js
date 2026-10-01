@@ -1,4 +1,7 @@
-const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8080";
+// In production (Vercel) this is left unset so API calls hit the same-origin
+// serverless functions under /api. For local development, .env points it at
+// the Spring Boot backend on :8080.
+const API_BASE_URL = import.meta.env.VITE_API_URL ?? "";
 
 async function handleResponse(response) {
   if (!response.ok) {
