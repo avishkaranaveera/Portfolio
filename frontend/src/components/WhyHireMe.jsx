@@ -1,4 +1,5 @@
 import useReveal from "../hooks/useReveal";
+import { Link } from "../router";
 
 const ICONS = ["🚀", "🧩", "💬", "⚡", "🎯", "🛠️"];
 
@@ -44,9 +45,9 @@ export default function WhyHireMe({ profile, testimonials }) {
       <div className="hire-cta">
         <h3>Have a project in mind or a role to fill?</h3>
         <p>I'm available for freelance work, contract roles, and full-time opportunities.</p>
-        <a className="btn btn-primary" href="#contact">
-          Let's Talk
-        </a>
+        <Link className="btn btn-primary" to="/contact">
+          Let's Talk &rarr;
+        </Link>
       </div>
     </section>
   );

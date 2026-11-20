@@ -1,13 +1,14 @@
-# Backend (Maven/Java)
-backend/target/
-backend/.mvn/wrapper/maven-wrapper.jar
-*.class
-
 # Frontend (Node/Vite)
 frontend/node_modules/
 frontend/dist/
 frontend/.env
 frontend/.env.local
+
+# Firebase
+.firebase/
+frontend/.firebase/
+firebase-debug.log*
+frontend/firebase-debug.log*
 
 # IDE / OS
 .idea/

@@ -1,35 +1,79 @@
 import { useEffect, useState } from "react";
 import {
   getCertifications,
-  getExperience,
   getProfile,
   getProjects,
-  getSkills,
   getStats,
   getTestimonials,
 } from "./api/client";
-import ParticleNetwork from "./three/ParticleNetwork";
+import { Router, useRouter } from "./router";
 import Loader from "./components/Loader";
+import RouteProgressBar from "./components/RouteProgressBar";
 import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import About from "./components/About";
-import Experience from "./components/Experience";
-import Skills from "./components/Skills";
-import Certifications from "./components/Certifications";
-import Projects from "./components/Projects";
-import WhyHireMe from "./components/WhyHireMe";
-import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+
+// Active Pages
+import HomePage from "./pages/HomePage";
+import AboutPage from "./pages/AboutPage";
+import ProjectsPage from "./pages/ProjectsPage";
+import CertificationsPage from "./pages/CertificationsPage";
+import ContactPage from "./pages/ContactPage";
+
 import "./App.css";
 
-const MIN_LOADER_MS = 1600;
+const MIN_LOADER_MS = 2400;
+
+function MainView({
+  profile,
+  stats,
+  projects,
+  certifications,
+  testimonials,
+}) {
+  const { path } = useRouter();
+
+  const renderActivePage = () => {
+    switch (path) {
+      case "/about":
+        return (
+          <AboutPage
+            profile={profile}
+            stats={stats}
+            testimonials={testimonials}
+          />
+        );
+      case "/projects":
+        return <ProjectsPage projects={projects} />;
+      case "/qualifications":
+      case "/certifications":
+        return <CertificationsPage certifications={certifications} />;
+      case "/contact":
+        return <ContactPage profile={profile} />;
+      case "/":
+      default:
+        return (
+          <HomePage
+            profile={profile}
+            stats={stats}
+            projects={projects}
+          />
+        );
+    }
+  };
+
+  return (
+    <>
+      <Navbar name={profile?.name} />
+      <main className="main-content">{renderActivePage()}</main>
+      <Footer profile={profile} />
+    </>
+  );
+}
 
 export default function App() {
   const [profile, setProfile] = useState(null);
-  const [skills, setSkills] = useState([]);
   const [projects, setProjects] = useState([]);
   const [certifications, setCertifications] = useState([]);
-  const [experience, setExperience] = useState([]);
   const [testimonials, setTestimonials] = useState([]);
   const [stats, setStats] = useState(null);
   const [loadError, setLoadError] = useState(null);
@@ -40,23 +84,27 @@ export default function App() {
   useEffect(() => {
     Promise.all([
       getProfile(),
-      getSkills(),
       getProjects(),
       getCertifications(),
-      getExperience(),
       getTestimonials(),
       getStats(),
     ])
-      .then(([profileData, skillsData, projectsData, certsData, experienceData, testimonialsData, statsData]) => {
-        setProfile(profileData);
-        setSkills(skillsData);
-        setProjects(projectsData);
-        setCertifications(certsData);
-        setExperience(experienceData);
-        setTestimonials(testimonialsData);
-        setStats(statsData);
-        setDataReady(true);
-      })
+      .then(
+        ([
+          profileData,
+          projectsData,
+          certsData,
+          testimonialsData,
+          statsData,
+        ]) => {
+          setProfile(profileData);
+          setProjects(projectsData);
+          setCertifications(certsData);
+          setTestimonials(testimonialsData);
+          setStats(statsData);
+          setDataReady(true);
+        }
+      )
       .catch((err) => {
         setLoadError(err.message);
         setDataReady(true);
@@ -74,42 +122,25 @@ export default function App() {
     return () => clearTimeout(unmountTimer);
   }, [ready]);
 
-  useEffect(() => {
-    if (profile?.name) {
-      document.title = `${profile.name} — ${profile.title || "Portfolio"}`;
-    }
-  }, [profile]);
-
   if (loadError) {
     return (
       <div className="load-error">
-        <p>Couldn't reach the backend API: {loadError}</p>
-        <p>Make sure the Spring Boot backend is running on port 8080.</p>
+        <p>Error loading portfolio data: {loadError}</p>
       </div>
     );
   }
 
   return (
-    <>
+    <Router>
+      <RouteProgressBar />
       {loaderMounted && <Loader leaving={ready} />}
-      <div className="aurora-bg" aria-hidden="true">
-        <span className="aurora-blob aurora-blob-1" />
-        <span className="aurora-blob aurora-blob-2" />
-        <span className="aurora-blob aurora-blob-3" />
-      </div>
-      <ParticleNetwork />
-      <Navbar name={profile?.name} />
-      <main>
-        <Hero profile={profile} stats={stats} />
-        <About profile={profile} stats={stats} />
-        <Experience experience={experience} />
-        <Skills skills={skills} />
-        <Certifications certifications={certifications} />
-        <Projects projects={projects} />
-        <WhyHireMe profile={profile} testimonials={testimonials} />
-        <Contact profile={profile} />
-      </main>
-      <Footer profile={profile} />
-    </>
+      <MainView
+        profile={profile}
+        stats={stats}
+        projects={projects}
+        certifications={certifications}
+        testimonials={testimonials}
+      />
+    </Router>
   );
 }

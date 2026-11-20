@@ -24,26 +24,27 @@ export default function HeroOrb() {
 
     const geometry = new THREE.TorusKnotGeometry(1.3, 0.42, 220, 32);
     const material = new THREE.MeshPhysicalMaterial({
-      color: 0x8b5cf6,
-      metalness: 0.55,
-      roughness: 0.15,
+      color: 0x0ea5e9,
+      metalness: 0.65,
+      roughness: 0.12,
       iridescence: 1,
-      iridescenceIOR: 1.3,
-      clearcoat: 0.6,
-      clearcoatRoughness: 0.2,
+      iridescenceIOR: 1.4,
+      clearcoat: 0.8,
+      clearcoatRoughness: 0.15,
     });
     const knot = new THREE.Mesh(geometry, material);
     scene.add(knot);
 
-    const keyLight = new THREE.PointLight(0x8b5cf6, 45, 20);
+    // Dynamic Electric Cyan & Indigo Lighting
+    const keyLight = new THREE.PointLight(0x00e5ff, 50, 22);
     keyLight.position.set(4, 3, 6);
     scene.add(keyLight);
 
-    const rimLight = new THREE.PointLight(0xec4899, 30, 20);
+    const rimLight = new THREE.PointLight(0x6366f1, 40, 22);
     rimLight.position.set(-4, -2, -4);
     scene.add(rimLight);
 
-    scene.add(new THREE.AmbientLight(0xffffff, 0.35));
+    scene.add(new THREE.AmbientLight(0xffffff, 0.4));
 
     const mouse = { x: 0, y: 0 };
     function handlePointerMove(event) {

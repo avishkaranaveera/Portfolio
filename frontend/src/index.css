@@ -1,22 +1,65 @@
+/* ==========================================================================
+   LUXURY GOLD & BLACK DESIGN SYSTEM (PRESTIGE & HIGH-ENGAGEMENT UX)
+   Engineered with Deep Obsidian Black, Champagne Gold & Burnished Metallics.
+   ========================================================================== */
 :root {
-  --color-bg: #08080d;
-  --color-bg-alt: #0f0f18;
-  --color-surface: rgba(255, 255, 255, 0.045);
-  --color-surface-solid: #15151f;
-  --color-border: rgba(255, 255, 255, 0.1);
-  --color-text: #f3f2fa;
-  --color-text-muted: #a3a1b8;
-  --color-accent: #8b5cf6;
-  --color-accent-hover: #a78bfa;
-  --color-accent-secondary: #ec4899;
-  --gradient-accent: linear-gradient(120deg, #8b5cf6, #ec4899);
-  --max-width: 1040px;
-  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  /* --- 1. Base Canvas & Elevated Surfaces (Deep Onyx & Obsidian) --- */
+  --color-bg: #09090b;                           /* Deep obsidian black */
+  --color-bg-alt: #121216;                       /* Elevated charcoal slate */
+  --color-surface: rgba(18, 18, 22, 0.85);       /* Tactile glass obsidian card */
+  --color-surface-hover: rgba(28, 28, 35, 0.95); /* Rich card hover state */
+  --color-surface-solid: #141418;                /* Solid deep black card */
+  --color-surface-active: rgba(245, 158, 11, 0.12);
+
+  /* --- 2. Borders & Specular Gold Accents --- */
+  --color-border: rgba(255, 255, 255, 0.09);    /* Clean subtle outline */
+  --color-border-hover: rgba(245, 158, 11, 0.45); /* Luminous gold on hover */
+  --color-border-accent: rgba(245, 158, 11, 0.65); /* Burnished metallic gold */
+
+  /* --- 3. Typography Hierarchy (Warm Radiant Ivory & Stone) --- */
+  --color-text: #fefce8;                         /* Radiant warm ivory white */
+  --color-text-body: #e7e5e4;                    /* Warm stone silver (high contrast & zero fatigue) */
+  --color-text-muted: #a8a29e;                   /* Neutral stone gray */
+  --color-text-subtle: #78716c;                  /* Subtle secondary slate */
+
+  /* --- 4. Brand Accents: Imperial Gold & Champagne Highlights --- */
+  --color-accent: #f59e0b;                       /* Imperial Warm Gold */
+  --color-accent-hover: #fbbf24;                 /* Radiant Champagne Gold */
+  --color-accent-gold-light: #fde68a;            /* Light metallic gold */
+  --color-accent-glow: rgba(245, 158, 11, 0.3);  /* Liquid gold glow */
+  --color-accent-emerald: #10b981;               /* Active status emerald */
+  --color-accent-amber: #d97706;                 /* Deep bronze amber */
+
+  /* --- 5. Unified Shimmering Metallic Gold Gradients --- */
+  --gradient-accent: linear-gradient(135deg, #fcd34d 0%, #f59e0b 50%, #d97706 100%);
+  --gradient-accent-soft: rgba(245, 158, 11, 0.08);
+  --gradient-card: linear-gradient(145deg, rgba(22, 22, 28, 0.9), rgba(14, 14, 18, 0.75));
+  --gradient-glow: radial-gradient(circle at 50% 50%, rgba(245, 158, 11, 0.15) 0%, transparent 70%);
+
+  /* --- 6. Shadows & Tactile Elevation --- */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --shadow-accent: 0 4px 18px rgba(245, 158, 11, 0.35);
+  --shadow-glow: 0 0 25px rgba(245, 158, 11, 0.22);
+
+  /* --- 7. Layout & Sizing --- */
+  --max-width: 1060px;
+  --navbar-height: 4.25rem;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  /* Premium Typography Stack */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   color-scheme: dark;
-  font-size: 20px;
+  font-size: 18px;
 }
 
-* {
+/* ==========================================================================
+   GLOBAL RESET & LUXURY BLACK/GOLD BACKGROUND
+   ========================================================================== */
+*, *::before, *::after {
   box-sizing: border-box;
 }
 
@@ -26,28 +69,47 @@ html {
 
 body {
   margin: 0;
-  background: var(--color-bg);
-  color: var(--color-text);
-  line-height: 1.6;
+  padding: 0;
+  background-color: var(--color-bg);
+  background-image: 
+    radial-gradient(ellipse 80% 50% at 50% -12%, rgba(245, 158, 11, 0.1), transparent),
+    radial-gradient(ellipse 60% 40% at 90% 80%, rgba(217, 119, 6, 0.06), transparent);
+  background-attachment: fixed;
+  color: var(--color-text-body);
+  line-height: 1.65;
   overflow-x: hidden;
+  min-height: 100vh;
 }
 
 a {
   color: var(--color-accent);
   text-decoration: none;
+  transition: color 0.2s ease;
 }
 
 a:hover {
   color: var(--color-accent-hover);
 }
 
-h1, h2, h3 {
-  line-height: 1.2;
+h1, h2, h3, h4 {
+  color: var(--color-text);
+  line-height: 1.25;
   margin: 0 0 0.5em;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+p {
+  margin: 0 0 1rem;
 }
 
 ul {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
 }

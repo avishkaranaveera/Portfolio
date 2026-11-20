@@ -9,8 +9,8 @@ export default function Certifications({ certifications }) {
       ref={ref}
       className={`section reveal ${visible ? "is-visible" : ""}`}
     >
-      <h2 className="section-title">Certifications</h2>
-      {certifications.length === 0 && <p>No certifications to show yet.</p>}
+      <h2 className="section-title">Verified Qualifications</h2>
+      {certifications.length === 0 && <p>No qualifications to show yet.</p>}
       <div className="cert-grid">
         {certifications.map((cert) => (
           <article key={cert.id} className="cert-card">
@@ -22,7 +22,7 @@ export default function Certifications({ certifications }) {
               </p>
               {cert.credentialUrl && (
                 <a href={cert.credentialUrl} target="_blank" rel="noreferrer">
-                  View credential
+                  View credential &rarr;
                 </a>
               )}
             </div>

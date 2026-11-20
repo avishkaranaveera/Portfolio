@@ -3,20 +3,15 @@
 // and ProfileController.java, which serve the same content for local development.
 
 export const profile = {
-  name: "Avishka Ranaveera",
-  title: "Full-Stack Developer",
-  tagline: "Building clean, reliable web applications",
+  name: "Avishka Ranaweera",
+  title: "Full-Stack Developer | AI Enthusiast | DevOps Learner",
+  tagline:
+    "Engineering intelligent web applications, modern AI integrations, and automated DevOps delivery pipelines.",
   bio:
-    "I'm a full-stack developer who enjoys turning ideas into working products, " +
-    "from REST APIs with Spring Boot to responsive interfaces with React. " +
-    "I care about clean architecture, readable code, and shipping things that " +
-    "actually solve the problem in front of me, not just the resume-friendly " +
-    "version of it. Outside of client work I spend time exploring new tools in " +
-    "the Java and JavaScript ecosystems and contributing to small open-source " +
-    "utilities. Replace this bio with your own story.",
+    "I'm a full-stack developer, AI enthusiast, and DevOps practitioner passionate about building clean, high-performance web applications. From resilient full-stack architectures and modern AI integrations to automated cloud deployment workflows, I focus on delivering scalable, production-grade solutions.",
   location: "Sri Lanka",
   email: "ashenikarunarathna2002@gmail.com",
-  photoUrl: "/profile.jpg",
+  photoUrl: "/ai-tech-hero.jpg",
   resumeUrl: "/resume.pdf",
   highlights: [
     "Full-stack delivery: one developer covering backend, frontend, and deployment",

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { sendContactMessage } from "../api/client";
 import { isEmailJsConfigured, sendViaEmailJs } from "../api/emailjs";
 import useReveal from "../hooks/useReveal";
 
@@ -21,31 +20,20 @@ export default function Contact({ profile }) {
     setStatus("sending");
     setError(null);
 
-    // Always record the message in the backend, then try to email it via EmailJS.
-    const backendSave = sendContactMessage(form).catch((err) => {
-      console.error("Failed to store contact message:", err.message);
-    });
-
     if (isEmailJsConfigured) {
       try {
         await sendViaEmailJs(form);
-        await backendSave;
         setStatus("sent");
         setForm(INITIAL_FORM);
       } catch (err) {
-        await backendSave;
         setStatus("error");
         setError(err.message || "Couldn't send your message. Please try again.");
       }
     } else {
-      try {
-        await backendSave;
-        setStatus("sent");
-        setForm(INITIAL_FORM);
-      } catch (err) {
-        setStatus("error");
-        setError(err.message);
-      }
+      // In development or when EmailJS keys are not provided yet:
+      console.info("Message submitted (configure EmailJS in .env to receive emails):", form);
+      setStatus("sent");
+      setForm(INITIAL_FORM);
     }
   }
 
@@ -59,8 +47,7 @@ export default function Contact({ profile }) {
       </p>
       {!isEmailJsConfigured && (
         <p className="contact-notice">
-          Email delivery isn't set up yet — messages are currently saved on the server only.
-          See the .env file for setup instructions.
+          Direct email delivery is not configured yet. Add your free EmailJS credentials to <code>.env</code> to receive messages in your inbox.
         </p>
       )}
       <form className="contact-form" onSubmit={handleSubmit}>

@@ -47,7 +47,7 @@ export default function ParticleNetwork() {
     const pointsGeometry = new THREE.BufferGeometry();
     pointsGeometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
     const pointsMaterial = new THREE.PointsMaterial({
-      color: 0x8b5cf6,
+      color: 0x38bdf8, // Electric Sky Cyan
       size: 0.18,
       transparent: true,
       opacity: 0.85,
@@ -61,9 +61,9 @@ export default function ParticleNetwork() {
     const lineGeometry = new THREE.BufferGeometry();
     lineGeometry.setAttribute("position", new THREE.BufferAttribute(linePositions, 3));
     const lineMaterial = new THREE.LineBasicMaterial({
-      color: 0x8b5cf6,
+      color: 0x6366f1, // Royal Indigo
       transparent: true,
-      opacity: 0.18,
+      opacity: 0.22,
       depthWrite: false,
     });
     const lines = new THREE.LineSegments(lineGeometry, lineMaterial);
