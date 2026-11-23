@@ -1,14 +1,24 @@
 import { useEffect, useState } from "react";
 import { RouterContext } from "./context";
 
+function normalizePath(raw) {
+  if (!raw) return "/";
+  // Extract path component before query parameters or hashes
+  const clean = raw.split("?")[0].split("#")[0];
+  // Strip trailing slashes (e.g. "/about/" -> "/about"), but keep root "/"
+  const trimmed = clean.replace(/\/+$/, "");
+  return trimmed === "" ? "/" : trimmed;
+}
+
 export function Router({ children }) {
-  const [path, setPath] = useState(
-    typeof window !== "undefined" ? window.location.pathname || "/" : "/"
-  );
+  const [path, setPath] = useState(() => {
+    if (typeof window === "undefined") return "/";
+    return normalizePath(window.location.pathname);
+  });
 
   useEffect(() => {
     const handlePopState = () => {
-      setPath(window.location.pathname || "/");
+      setPath(normalizePath(window.location.pathname));
     };
 
     window.addEventListener("popstate", handlePopState);
@@ -16,9 +26,10 @@ export function Router({ children }) {
   }, []);
 
   const navigate = (to) => {
-    if (to === path) return;
-    window.history.pushState({}, "", to);
-    setPath(to);
+    const targetPath = normalizePath(to);
+    if (targetPath === path && window.location.pathname === targetPath) return;
+    window.history.pushState({}, "", targetPath);
+    setPath(targetPath);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 

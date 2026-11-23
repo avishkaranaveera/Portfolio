@@ -12,7 +12,6 @@ export default function AboutPage({ profile, stats, testimonials }) {
       />
 
       <div className="page-header">
-        <span className="section-eyebrow">Profile &amp; Background</span>
         <h1 className="page-title">About Me</h1>
         <p className="page-subtitle">
           Software craftsmanship, engineering philosophy, and the journey so far.

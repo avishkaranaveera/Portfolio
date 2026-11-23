@@ -33,7 +33,8 @@ function MainView({
   const { path } = useRouter();
 
   const renderActivePage = () => {
-    switch (path) {
+    const current = path ? path.replace(/\/+$/, "") || "/" : "/";
+    switch (current) {
       case "/about":
         return (
           <AboutPage

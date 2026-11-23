@@ -42,9 +42,31 @@ export default function Contact({ profile }) {
       <h2 className="section-title">Get in Touch</h2>
       <p className="contact-intro">
         {profile?.email
-          ? `Reach out directly at ${profile.email}, or use the form below.`
+          ? `Reach out directly at ${profile.email}, call or WhatsApp ${profile?.phone || "0765431652"}, or use the form below.`
           : "Send a message using the form below."}
       </p>
+
+      <div className="contact-quick-links">
+        {profile?.email && (
+          <a href={`mailto:${profile.email}`} className="contact-pill" title="Send direct email">
+            <span className="contact-pill-icon">✉️</span>
+            <span>{profile.email}</span>
+          </a>
+        )}
+        {profile?.phone && (
+          <a href={`tel:${profile.phone}`} className="contact-pill" title="Call or WhatsApp">
+            <span className="contact-pill-icon">📞</span>
+            <span>{profile.phone}</span>
+          </a>
+        )}
+        {profile?.location && (
+          <div className="contact-pill contact-pill-static" title="Location">
+            <span className="contact-pill-icon">📍</span>
+            <span>{profile.location}</span>
+          </div>
+        )}
+      </div>
+
       {!isEmailJsConfigured && (
         <p className="contact-notice">
           Direct email delivery is not configured yet. Add your free EmailJS credentials to <code>.env</code> to receive messages in your inbox.

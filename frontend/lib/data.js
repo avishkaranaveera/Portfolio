@@ -8,9 +8,10 @@ export const profile = {
   tagline:
     "Freelance Full-Stack Developer engineering intelligent web applications, modern AI integrations, and automated DevOps delivery pipelines.",
   bio:
-    "I'm a full-stack developer, AI enthusiast, and DevOps practitioner passionate about building clean, high-performance web applications. From resilient full-stack architectures and modern AI integrations to automated cloud deployment workflows, I focus on delivering scalable, production-grade solutions.",
-  location: "Sri Lanka",
-  email: "ashenikarunarathna2002@gmail.com",
+    "I am a passionate Full-Stack Developer, Freelance Engineer, and AI & DevOps practitioner based in Walasmulla, Sri Lanka. I specialize in building resilient, scalable web applications that seamlessly bridge modern frontend interfaces, robust backend architectures, and cutting-edge artificial intelligence. From designing responsive, high-performance UIs in React to building secure RESTful APIs, scalable database models, and automated CI/CD deployment pipelines with Docker and modern cloud platforms, I take pride in delivering clean, maintainable, and production-ready code that solves real-world challenges.",
+  location: "Walasmulla",
+  email: "avishkaranaveer1112@gmail.com",
+  phone: "0765431652",
   photoUrl: "/ai-tech-hero.jpg",
   resumeUrl: "/resume.pdf",
   highlights: [
