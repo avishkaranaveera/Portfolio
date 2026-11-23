@@ -4,9 +4,9 @@
 
 export const profile = {
   name: "Avishka Ranaweera",
-  title: "Full-Stack Developer | AI Enthusiast | DevOps Learner",
+  title: "Full-Stack Developer | Freelancer | AI Enthusiast | DevOps Learner",
   tagline:
-    "Engineering intelligent web applications, modern AI integrations, and automated DevOps delivery pipelines.",
+    "Freelance Full-Stack Developer engineering intelligent web applications, modern AI integrations, and automated DevOps delivery pipelines.",
   bio:
     "I'm a full-stack developer, AI enthusiast, and DevOps practitioner passionate about building clean, high-performance web applications. From resilient full-stack architectures and modern AI integrations to automated cloud deployment workflows, I focus on delivering scalable, production-grade solutions.",
   location: "Sri Lanka",

@@ -1,22 +1,30 @@
 import SEO from "../components/SEO";
 import Hero from "../components/Hero";
 import { Link } from "../router";
+import useReveal from "../hooks/useReveal";
 
 export default function HomePage({ profile, stats, projects }) {
   const featuredProjects = projects.slice(0, 3);
+  const [projectsRef, projectsVisible] = useReveal();
+  const [highlightsRef, highlightsVisible] = useReveal();
+  const [ctaRef, ctaVisible] = useReveal();
 
   return (
     <div className="page page-home">
       <SEO
-        title="Full-Stack Developer"
+        title="Full-Stack Developer, Freelancer & AI Specialist"
         description={`${profile?.name} - ${profile?.title}. ${profile?.tagline}`}
         path="/"
       />
 
+      {/* Hero with 1st Grid (Image & Description) + 2nd Grid (Proven Experience Animated Metrics) */}
       <Hero profile={profile} stats={stats} />
 
-      {/* Featured Projects Section */}
-      <section className="section home-preview-section">
+      {/* Featured Projects Section (Reveals One by One on Scroll) */}
+      <section
+        ref={projectsRef}
+        className={`section home-preview-section reveal ${projectsVisible ? "is-visible" : ""}`}
+      >
         <div className="section-header-flex">
           <div>
             <span className="section-eyebrow">Selected Work</span>
@@ -29,7 +37,7 @@ export default function HomePage({ profile, stats, projects }) {
 
         <div className="projects-grid">
           {featuredProjects.map((project) => (
-            <article key={project.id} className="project-card">
+            <article key={project.id} className="project-card stagger-item">
               <h3>{project.title}</h3>
               <p>{project.description}</p>
               {project.tags?.length > 0 && (
@@ -56,9 +64,12 @@ export default function HomePage({ profile, stats, projects }) {
         </div>
       </section>
 
-      {/* Value Proposition Highlights */}
+      {/* Value Proposition Highlights (Reveals One by One on Scroll) */}
       {profile?.highlights?.length > 0 && (
-        <section className="section home-highlights-section">
+        <section
+          ref={highlightsRef}
+          className={`section home-highlights-section reveal ${highlightsVisible ? "is-visible" : ""}`}
+        >
           <div className="section-header-flex">
             <div>
               <span className="section-eyebrow">Key Strengths</span>
@@ -70,7 +81,7 @@ export default function HomePage({ profile, stats, projects }) {
           </div>
           <div className="highlights-grid">
             {profile.highlights.map((point) => (
-              <div key={point} className="highlight-card">
+              <div key={point} className="highlight-card stagger-item">
                 <span className="highlight-check">✓</span>
                 <p>{point}</p>
               </div>
@@ -79,8 +90,11 @@ export default function HomePage({ profile, stats, projects }) {
         </section>
       )}
 
-      {/* Clean Call to Action Banner */}
-      <section className="section home-cta-banner">
+      {/* Clean Call to Action Banner (Reveals on Scroll) */}
+      <section
+        ref={ctaRef}
+        className={`section home-cta-banner reveal ${ctaVisible ? "is-visible" : ""}`}
+      >
         <div className="hire-cta">
           <h3>Let's build something great together</h3>
           <p>
