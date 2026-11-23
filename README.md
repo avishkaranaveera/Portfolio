@@ -1,29 +1,69 @@
-# Avishka Ranaveera — Portfolio
+# 👨‍💻 Avishka Ranaveera – Personal Portfolio
 
-A full-stack personal portfolio: a Spring Boot REST API backing a React (Vite) frontend with a Three.js particle background, a 3D hero visual, and an EmailJS-backed contact form.
+A modern, full-stack personal portfolio showcasing my skills, projects, experience, certifications, and development journey. Built with **React, Java Spring Boot, and Three.js**, featuring interactive 3D visuals, animated backgrounds, and dynamic API integration.
 
-## Stack
+## ✨ Features
 
-- **Backend:** Java 21, Spring Boot 4, Spring Data JPA, H2 (in-memory)
-- **Frontend:** React 19, Vite, Three.js, EmailJS
+- Modern and responsive portfolio design
+- Interactive 3D hero section using Three.js
+- Animated particle background
+- Dynamic content powered by Spring Boot REST APIs
+- Projects, skills, certifications, and experience sections
+- Contact form with EmailJS integration
+- Backend-powered content management
 
-## Project structure
+## 🛠️ Tech Stack
 
+**Frontend**
+- React 19
+- Vite
+- Three.js
+- EmailJS
+
+**Backend**
+- Java 21
+- Spring Boot 4
+- Spring Data JPA
+- H2 Database
+
+**Deployment**
+- Netlify
+- Render
+- Vercel
+
+## 📂 Project Structure
+
+```text
+Portfolio/
+├── backend/       # Spring Boot REST API
+├── frontend/      # React + Vite application
+├── .github/       # GitHub Actions workflows
+├── render.yaml
+├── netlify.toml
+└── README.md
 ```
-backend/    Spring Boot API (profile, skills, projects, certifications, experience, testimonials, stats, contact)
-frontend/   React + Vite single-page portfolio
+
+## 🚀 Getting Started
+
+**1. Clone the repository**
+
+```bash
+git clone https://github.com/avishkaranaveera/Portfolio.git
+cd Portfolio
 ```
 
-## Running locally
-
-**Backend** (http://localhost:8080):
+**2. Start the backend**
 
 ```bash
 cd backend
 ./mvnw spring-boot:run
 ```
 
-**Frontend** (http://localhost:5173):
+Backend: `http://localhost:8080`
+
+**3. Start the frontend**
+
+Open another terminal:
 
 ```bash
 cd frontend
@@ -31,24 +71,29 @@ npm install
 npm run dev
 ```
 
-Copy `frontend/.env.example` to `frontend/.env` and fill in your EmailJS credentials to enable the contact form's email delivery (optional — the form still saves messages via the backend without it).
+Frontend: `http://localhost:5173`
 
-## Editing your content
+## ⚙️ Environment Configuration
 
-All personal content is served from the backend so it's a single source of truth:
+Create a `.env` file inside the frontend directory using `.env.example` as a reference.
 
-- **Profile, bio, highlights:** [`ProfileController`](backend/src/main/java/com/avishka/portfolio/controller/ProfileController.java)
-- **Skills, projects, certifications, experience, testimonials:** seeded in [`DataSeeder`](backend/src/main/java/com/avishka/portfolio/config/DataSeeder.java)
-- **Profile photo:** drop an image at `frontend/public/profile.jpg`
-- **Resume:** drop a PDF at `frontend/public/resume.pdf`
+Configure your EmailJS credentials to enable email delivery through the contact form.
 
-## Deployment
+## ☁️ Deployment
 
-- **Backend → Render:** [`render.yaml`](render.yaml) + [`backend/Dockerfile`](backend/Dockerfile) — import this repo as a Blueprint on [Render](https://render.com)
-- **Frontend → Netlify:** [`netlify.toml`](netlify.toml) — import this repo on [Netlify](https://netlify.com)
-- **Frontend → Vercel:** import this repo on [Vercel](https://vercel.com), set the project's Root Directory to `frontend` (Vercel auto-detects the Vite framework)
+- **Backend:** Render
+- **Frontend:** Netlify or Vercel
 
-After deploying, set these environment variables:
+Configure the required environment variables and CORS settings before deployment.
 
-- On the frontend host: `VITE_API_URL` (your deployed backend URL), plus the `VITE_EMAILJS_*` values
-- On Render: `CORS_ALLOWED_ORIGINS` set to your deployed frontend URL
+## 👨‍💻 Developer
+
+**Avishka Ranaveera**
+
+Full-Stack Software Developer | Building Modern Web Applications
+
+- GitHub: [@avishkaranaveera](https://github.com/avishkaranaveera)
+
+---
+
+⭐ If you find this project interesting, feel free to explore the repository!
